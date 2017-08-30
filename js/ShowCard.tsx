@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router'
+import * as React from 'react'
+import { Link } from 'react-router-dom'
 const { string } = React.PropTypes
 
 const ShowCard = React.createClass({
@@ -10,16 +10,16 @@ const ShowCard = React.createClass({
     description: string.isRequired,
     imdbID: string.isRequired
   },
-  render () {
+  render() {
     const { poster, title, year, description, imdbID } = this.props
     return (
-      <Link to={`/details/${imdbID}`}>
+      <Link to={ `/details/${imdbID}` }>
         <div className='show-card'>
-          <img src={`/public/img/posters/${poster}`} />
+          <img src={ `/public/img/posters/${poster}` } />
           <div>
-            <h3>{title}</h3>
-            <h4>({year})</h4>
-            <p>{description}</p>
+            <h3>{ title }</h3>
+            <h4>({ year })</h4>
+            <p>{ description }</p>
           </div>
         </div>
       </Link>

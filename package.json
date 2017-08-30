@@ -16,6 +16,11 @@
     "start": "NODE_ENV=server node server.js"
   },
   "dependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "@types/react-redux": "^5.0.5",
+    "@types/react-router": "^4.0.15",
+    "@types/react-router-dom": "^4.0.7",
     "axios": "^0.15.3",
     "express": "4.14.0",
     "history": "^4.4.0",
@@ -24,12 +29,14 @@
     "preact-compat": "^3.9.3",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-redux": "4.4.0",
-    "react-router": "4.0.0-alpha.5",
-    "redux": "3.3.1",
-    "redux-thunk": "^2.1.0"
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
     "babel-core": "6.16.0",
     "babel-jest": "16.0.0",
     "babel-loader": "6.2.7",
@@ -56,6 +63,7 @@
     "react-addons-test-utils": "15.3.2",
     "react-test-renderer": "15.3.2",
     "style-loader": "0.13.1",
+    "typescript": "^2.4.2",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "1.16.2"
   },

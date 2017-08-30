@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
-  entry: './js/ClientApp.js',
+  entry: './js/ClientApp.tsx',
   // devtool: 'cheap-module-source-map',
   output: {
     path: path.join(__dirname, '/public'),
@@ -15,11 +15,11 @@ module.exports = {
     historyApiFallback: true
   },
   resolve: {
-    extensions: ['.js', '.json'],
-    alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat'
-    }
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
+    // alias: {
+    //   react: 'preact-compat',
+    //   'react-dom': 'preact-compat'
+    // }
   },
   stats: {
     colors: true,
@@ -43,8 +43,8 @@ module.exports = {
           path.resolve(__dirname, 'js'),
           path.resolve('node_modules/preact-compat/src')
         ],
-        test: /\.js$/,
-        loader: 'babel-loader'
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.css$/,
