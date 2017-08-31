@@ -1,6 +1,6 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import rootReducer from './reducers'
+import { rootReducer } from './reducers'
 
 interface WindowCustom extends Window {
   devToolsExtension: Function;
@@ -8,9 +8,7 @@ interface WindowCustom extends Window {
 
 declare const window: WindowCustom;
 
-const store = createStore(rootReducer, compose(
+export const store = createStore(rootReducer, <any>compose(
   applyMiddleware(thunk),
-  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f: any) => f
 ))
-
-export default store

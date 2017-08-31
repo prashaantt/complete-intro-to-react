@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import ShowCard from './ShowCard'
+import { ShowCard } from './ShowCard'
 import { HeaderContainer } from './Header'
 import { Show } from "./Details";
-const { arrayOf, shape, string } = React.PropTypes
+import { AppState } from "./reducers";
 
 interface SearchProps {
   shows: Show[]
@@ -14,14 +14,6 @@ interface InjectedProps {
 }
 
 class Search extends React.Component<SearchProps & InjectedProps> {
-  // propTypes: {
-  //   shows: arrayOf(shape({
-  //     title: string,
-  //     description: string
-  //   })),
-  //   searchTerm: string
-  // }
-
   render() {
     return (
       <div className='search'>
@@ -40,7 +32,7 @@ class Search extends React.Component<SearchProps & InjectedProps> {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppState) => {
   return {
     searchTerm: state.searchTerm
   }

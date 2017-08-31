@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setSearchTerm } from './actionCreators'
 import { withRouter, RouteComponentProps } from "react-router";
-const { string, func, object } = React.PropTypes
+import { AppState, ActionType } from "./reducers";
+import { Dispatch } from "redux";
+import { RouterParams } from "./App";
 
 interface InjectedProps {
   dispatchSetSearchTerm: (term: string) => void;
@@ -11,28 +13,19 @@ interface InjectedProps {
 }
 
 @withRouter
-class Landing extends React.Component<InjectedProps & RouteComponentProps<any>> {
-  // contextTypes: {
-  //   router: object
-  // }
-
-  constructor(props: InjectedProps & RouteComponentProps<any>) {
+class Landing extends React.Component<InjectedProps & RouteComponentProps<RouterParams>> {
+  constructor(props: InjectedProps & RouteComponentProps<RouterParams>) {
     super(props);
 
     this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
-  // propTypes: {
-  //   searchTerm: string,
-  //   dispatchSetSearchTerm: func
-  // }
-
-  handleSearchTermChange(event) {
-    this.props.dispatchSetSearchTerm(event.target.value)
+  handleSearchTermChange(event: React.ChangeEvent<{ value: string }>) {
+    this.props.dispatchSetSearchTerm(event.target.value);
   }
 
-  handleSearchSubmit(event) {
+  handleSearchSubmit(event: React.FormEvent<any>) {
     event.preventDefault()
     this.props.history.replace('/search')
   }
@@ -50,15 +43,15 @@ class Landing extends React.Component<InjectedProps & RouteComponentProps<any>> 
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppState) => {
   return {
     searchTerm: state.searchTerm
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<AppState, ActionType>) => {
   return {
-    dispatchSetSearchTerm(searchTerm) {
+    dispatchSetSearchTerm(searchTerm: string) {
       dispatch(setSearchTerm(searchTerm))
     }
   }

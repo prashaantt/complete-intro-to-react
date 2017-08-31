@@ -4,7 +4,7 @@ const webpack = require('webpack')
 module.exports = {
   context: __dirname,
   entry: './js/ClientApp.tsx',
-  // devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',

@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { getOMDBDetails } from './actionCreators'
 import { HeaderContainer } from './Header'
-const { shape, string, func } = React.PropTypes
+import { AppState, ActionType } from "./reducers";
+import { Dispatch } from "redux";
+import { ThunkAction } from 'redux-thunk';
 
 interface Data {
   imdbRating: string;
@@ -22,26 +24,11 @@ interface DetailsProps {
 }
 
 interface InjectedProps {
-  dispatch: Dispatch<any>;
+  dispatch: Dispatch<AppState, ActionType>;
   omdbData: Data;
 }
 
 class Details extends React.Component<DetailsProps & InjectedProps> {
-  // propTypes: {
-  //   show: shape({
-  //     title: string,
-  //     year: string,
-  //     poster: string,
-  //     trailer: string,
-  //     description: string,
-  //     imdbID: string
-  //   }),
-  //   omdbData: shape({
-  //     imdbID: string
-  //   }),
-  //   dispatch: func
-  // }
-
   componentDidMount() {
     if (!this.props.omdbData.imdbRating) {
       this.props.dispatch(getOMDBDetails(this.props.show.imdbID))
@@ -74,13 +61,8 @@ class Details extends React.Component<DetailsProps & InjectedProps> {
   }
 }
 
-const mapStateToProps = (state, ownProps: DetailsProps) => {
+const mapStateToProps = (state: AppState, ownProps: DetailsProps) => {
   const omdbData = state.omdbData[ownProps.show.imdbID] ? state.omdbData[ownProps.show.imdbID] : {}
-  // if (state.omdbData[ownProps.show.imdbID]) {
-  //   omdbData = state.omdbData[ownProps.show.imdbID]
-  // } else {
-  //   omdbData = {}
-  // }
   return {
     omdbData
   }

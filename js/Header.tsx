@@ -1,15 +1,16 @@
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
-// import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import { setSearchTerm } from './actionCreators'
 import { Link } from 'react-router-dom'
+import { AppState, ActionType } from "./reducers";
 
 interface HeaderProps {
   showSearch?: boolean;
 }
 
 interface InjectedProps {
-  dispatch: Dispatch<any>;
+  dispatch: Dispatch<AppState, ActionType>;
   searchTerm: string;
 }
 
@@ -19,9 +20,11 @@ class Header extends React.Component<HeaderProps & InjectedProps> {
 
     this.handleSearchTermChange = this.handleSearchTermChange.bind(this)
   }
-  handleSearchTermChange(event) {
+
+  handleSearchTermChange(event: React.ChangeEvent<{ value: string }>) {
     this.props.dispatch(setSearchTerm(event.target.value))
   }
+
   render() {
     let utilSpace
     if (this.props.showSearch) {
@@ -47,13 +50,6 @@ class Header extends React.Component<HeaderProps & InjectedProps> {
     )
   }
 }
-
-// const { func, bool, string } = React.PropTypes
-// Header.propTypes = {
-//   dispatch: func,
-//   showSearch: bool,
-//   searchTerm: string
-// }
 
 const mapStateToProps = (state: { searchTerm: string }) => {
   return {

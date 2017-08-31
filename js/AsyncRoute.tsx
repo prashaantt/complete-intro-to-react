@@ -1,9 +1,12 @@
 import * as React from 'react'
-const { object } = React.PropTypes
+
+interface Module {
+  default: any;
+}
 
 interface AsyncRouteProps {
   props: any;
-  loadingPromise: Promise<any>;
+  loadingPromise: Promise<Module>;
 }
 
 interface AsyncRouteState {
@@ -11,28 +14,22 @@ interface AsyncRouteState {
 }
 
 export class AsyncRoute extends React.Component<AsyncRouteProps, AsyncRouteState> {
-  // propTypes: {
-  //   props: object,
-  //   loadingPromise: object
-  // },
-  private component: any;
+  private component: React.ComponentType;
+
   constructor(props: AsyncRouteProps) {
     super(props);
     this.state = {
       loaded: false
     }
   }
-  // getInitialState() {
-  //   return {
-  //     loaded: false
-  //   }
-  // },
+
   componentDidMount() {
     this.props.loadingPromise.then((module) => {
       this.component = module.default
       this.setState({ loaded: true })
     })
   }
+
   render() {
     if (this.state.loaded) {
       return <this.component {...this.props.props} />
