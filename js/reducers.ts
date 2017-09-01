@@ -20,15 +20,15 @@ export enum ActionType {
 //   type: ActionType;
 // }
 
-const getUpdatedSearchTerm = (state: AppState, action: Action<ActionType> & AppState): AppState => {
+const getUpdatedSearchTerm = (state: AppState, action: Action & AppState): AppState => {
   return { ...state, searchTerm: action.searchTerm };
 }
 
-const getUpdatedOMDBData = (state: AppState, action: Action<ActionType> & AppState): AppState => {
+const getUpdatedOMDBData = (state: AppState, action: Action & AppState): AppState => {
   return { ...state, omdbData: { ...state.omdbData, ...action.omdbData } } as AppState;
 }
 
-export const rootReducer = (state = DEFAULT_STATE, action: Action<ActionType> & AppState): AppState => {
+export const rootReducer = (state = DEFAULT_STATE, action: Action & AppState): AppState => {
   switch (action.type) {
     case ActionType.SetSearchTerm:
       return getUpdatedSearchTerm(state, action)

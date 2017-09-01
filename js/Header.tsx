@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 interface InjectedProps {
-  dispatch: Dispatch<AppState, ActionType>;
+  dispatch: Dispatch<AppState>;
   searchTerm: string;
 }
 

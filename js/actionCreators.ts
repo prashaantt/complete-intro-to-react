@@ -1,19 +1,18 @@
 import axios from 'axios'
 import { Show } from "./Details";
-import { Dispatch } from "redux";
+import { Dispatch, Action } from "redux";
 import { ActionType, AppState } from "./reducers";
-import { Action } from "redux";
 
-export function setSearchTerm(searchTerm: string): Action<ActionType> & Partial<AppState> {
+export function setSearchTerm(searchTerm: string): Action & Partial<AppState> {
   return { type: ActionType.SetSearchTerm, searchTerm }
 }
 
-export function addOMDBData(imdbID: string, omdbData: Show): Action<ActionType> & Partial<AppState> {
+export function addOMDBData(imdbID: string, omdbData: Show): Action & Partial<AppState> {
   return { type: ActionType.AddOmdbData, omdbData: { [imdbID]: omdbData } }
 }
 
 export function getOMDBDetails(imdbID: string) {
-  return function (dispatch: Dispatch<AppState, ActionType>, getState: () => AppState) {
+  return function (dispatch: Dispatch<AppState>, getState: () => AppState) {
     // axios.get(`http://www.omdbapi.com/?i=${imdbID}`)
     //   .then((response) => {
     //     dispatch(addOMDBData(imdbID, {

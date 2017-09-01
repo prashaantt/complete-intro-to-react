@@ -49,7 +49,7 @@ const mapStateToProps = (state: AppState) => {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState, ActionType>) => {
+const mapDispatchToProps = (dispatch: Dispatch<AppState>) => {
   return {
     dispatchSetSearchTerm(searchTerm: string) {
       dispatch(setSearchTerm(searchTerm))

@@ -24,7 +24,7 @@ interface DetailsProps {
 }
 
 interface InjectedProps {
-  dispatch: Dispatch<AppState, ActionType>;
+  dispatch: Dispatch<AppState>;
   omdbData: Data;
 }
 
