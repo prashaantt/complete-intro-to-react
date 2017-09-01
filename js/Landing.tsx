@@ -5,7 +5,7 @@ import { setSearchTerm } from './actionCreators'
 import { withRouter, RouteComponentProps } from "react-router";
 import { AppState, ActionType } from "./reducers";
 import { Dispatch } from "redux";
-import { RouterParams } from "./App";
+import { RouterParams } from "./routes";
 
 interface InjectedProps {
   dispatchSetSearchTerm: (term: string) => void;
