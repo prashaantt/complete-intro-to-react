@@ -5,7 +5,7 @@ import { HeaderContainer } from './Header'
 import { Show } from "./Details";
 import { AppState } from "./reducers";
 
-interface SearchProps {
+export interface SearchProps {
   shows: Show[]
 }
 

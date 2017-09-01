@@ -4,19 +4,19 @@ interface Module {
   default: any;
 }
 
-interface AsyncRouteProps {
-  props: any;
+export interface AsyncRouteProps<T = any> {
+  props: T;
   loadingPromise: Promise<Module>;
 }
 
-interface AsyncRouteState {
+export interface AsyncRouteState {
   loaded: boolean;
 }
 
-export class AsyncRoute extends React.Component<AsyncRouteProps, AsyncRouteState> {
+export class AsyncRoute<T = any> extends React.Component<AsyncRouteProps<T>, AsyncRouteState> {
   private component: React.ComponentType;
 
-  constructor(props: AsyncRouteProps) {
+  constructor(props: AsyncRouteProps<T>) {
     super(props);
     this.state = {
       loaded: false

@@ -20,9 +20,7 @@ export const App = () => {
   return (
     <Provider store={ store }>
       <div className='app'>
-        {
-          routes.map((route, i) => <RouteWithSubRoutes key={ i } {...route} />)
-        }
+        { routes.map((route, i) => <RouteWithSubRoutes key={ i } {...route} />) }
       </div>
     </Provider>
   )

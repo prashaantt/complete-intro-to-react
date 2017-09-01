@@ -19,7 +19,7 @@ export interface Show {
   imdbID: string;
 }
 
-interface DetailsProps {
+export interface DetailsProps {
   show: Show;
 }
 
