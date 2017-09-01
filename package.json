@@ -13,9 +13,11 @@
     "test": "NODE_ENV=test jest",
     "update-test": "npm run test -- -u",
     "cover": "npm run test -- --coverage",
-    "start": "NODE_ENV=server node server.js"
+    "start": "NODE_ENV=server ts-node server.ts"
   },
   "dependencies": {
+    "@types/express": "^4.0.37",
+    "@types/lodash": "^4.14.74",
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
     "@types/react-redux": "^5.0.5",
