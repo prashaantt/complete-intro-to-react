@@ -1,12 +1,12 @@
-const path = require('path')
-const webpack = require('webpack')
+import { join, resolve } from "path";
+import { Configuration } from "webpack";
 
-module.exports = {
+export default {
   context: __dirname,
-  entry: './js/ClientApp.tsx',
+  entry: './src/ClientApp.tsx',
   devtool: 'cheap-module-source-map',
   output: {
-    path: path.join(__dirname, '/public'),
+    path: join(__dirname, '/public'),
     filename: 'bundle.js',
     publicPath: '/public/'
   },
@@ -40,8 +40,8 @@ module.exports = {
       },
       {
         include: [
-          path.resolve(__dirname, 'js'),
-          path.resolve('node_modules/preact-compat/src')
+          resolve(__dirname, 'src'),
+          resolve('node_modules/preact-compat/src')
         ],
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
@@ -60,4 +60,4 @@ module.exports = {
       }
     ]
   }
-}
+} as Configuration;
